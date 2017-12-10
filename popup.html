@@ -2,10 +2,30 @@
 <html>
   <head>
     <title>Link Savr</title>
+    <script
+  src="https://code.jquery.com/jquery-3.2.1.min.js"
+  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  crossorigin="anonymous"></script>
     <script src="popup.js"></script>
+    <link href="styles.css" rel="stylesheet" type="text/css">
   </head>
   <body>
-    <h1>Link Savr</h1>
-    <button id="checkPage">Save a link now!</button>
+    <div class="container">
+      <h1>Link Savr</h1>
+      <div id="start-container">
+        <p id="sign-in"><a href="#">sign in</a></p>
+        <p id="sign-up"><a href="#">sign up</a></p>
+      </div>
+
+      <div id="sign-in-container">
+        <form id="sign-in-form">
+          <p>email</p>
+          <input id="email" type="text" name="email"><br>
+          <p>password</p>
+          <input id="password" type="text" name="password"><br><br>
+          <p><a href="#" id="sign-in-submit">sign in</a><p>
+        </form>
+      </div>
+    </div>
   </body>
 </html>
