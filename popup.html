@@ -2,10 +2,6 @@
 <html>
   <head>
     <title>Link Savr</title>
-    <script
-  src="https://code.jquery.com/jquery-3.2.1.min.js"
-  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-  crossorigin="anonymous"></script>
     <script src="popup.js"></script>
     <link href="styles.css" rel="stylesheet" type="text/css">
   </head>
@@ -18,12 +14,12 @@
       </div>
 
       <div id="sign-in-container">
-        <form id="sign-in-form">
+        <form id="sign-in-form" enctype='application/json'>
           <p>email</p>
           <input id="email" type="text" name="email"><br>
           <p>password</p>
           <input id="password" type="text" name="password"><br><br>
-          <p><a href="#" id="sign-in-submit">sign in</a><p>
+          <input type="submit" value="Submit">
         </form>
       </div>
     </div>

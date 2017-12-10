@@ -3,8 +3,8 @@ document.addEventListener("DOMContentLoaded", function() {
   var signIn = document.getElementById("sign-in");
   var startContainer = document.getElementById("start-container");
   var signInContainer = document.getElementById("sign-in-container");
-  var signInForm = document.getElementById("sign-in-form");
   var signInSubmit = document.getElementById("sign-in-submit");
+  var signInForm = document.getElementById("sign-in-form");
 
   signUp.addEventListener("click", function() {
     chrome.tabs.create({url: "https://link-savr.herokuapp.com"});
@@ -15,20 +15,22 @@ document.addEventListener("DOMContentLoaded", function() {
     signInContainer.style.display = "block";
   });
 
-  signInSubmit.addEventListener("click", function() {
+  /// This is is not being processed as a json request by the rails app
+  /// Change route, eventually
+  signInForm.addEventListener("submit", function() {
     var email = document.getElementById("email").value;
-    var password = document.getElementById("password").value;
-    $.ajax({
-      dataType: "json",
-      url: "http://localhost:3000/auth/login",
-      method: "POST",
-      data: {email: email, password: password}
-    }).done(function(data) {
-      console.log(data)
-    });
+     var password = document.getElementById("password").value;
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', 'http://localhost:3000/auth/login');
+    xhr.setRequestHeader('Content-Type', 'application/json');
+    xhr.onload = function() {
+        if (xhr.status === 200) {
+            var userInfo = JSON.parse(xhr.responseText);
+        }
+    };
+    xhr.send(JSON.stringify({
+        email: email,
+        password: password
+    }));
   });
-
 }, false);
-
-
-// https://www.google.com/search?q=build+chrome+extension&oq=build+chrome+e&aqs=chrome.0.0l2j69i57j0l3.2776j0j7&sourceid=chrome&ie=UTF-8
